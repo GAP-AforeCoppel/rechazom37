@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flyer ADN Afore Coppel - Riesgo Domicilio Final</title>
+    <!-- Librerías de diseño y exportación -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coppel-yellow: #FFD400;
+            --coppel-blue: #00418D;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .bg-coppel-blue { background-color: var(--coppel-blue) !important; }
+        .text-coppel-blue { color: var(--coppel-blue) !important; }
+        .bg-coppel-yellow { background-color: var(--coppel-yellow) !important; }
+        
+        .flyer-wrapper {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        #flyer-to-print {
+            width: 800px;
+            background: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+            overflow: hidden; 
+            flex-shrink: 0;
+        }
+
+        .wave-svg-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 350px;
+            z-index: 1;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--coppel-yellow);
+            z-index: 2;
+        }
+
+        .alert-badge {
+            background: #ff4d4d;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            height: 40px;
+            padding: 0 25px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(255, 77, 77, 0.4);
+            position: relative;
+            z-index: 10;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .image-display-frame {
+            background: #f8fafc;
+            border-radius: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            height: 180px; 
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 10;
+            padding: 0 60px;
+            margin-top: 330px; 
+        }
+        
+        .shadow-text {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tip-box {
+            background-color: #fffbeb;
+            border-left: 6px solid var(--coppel-yellow);
+            padding: 20px;
+            border-radius: 1rem;
+            margin-top: 10px;
+        }
+
+        .flyer-footer {
+            width: 100%;
+            background: white;
+            position: relative;
+            z-index: 30;
+            padding-bottom: 30px;
+            margin-top: 10px;
+        }
+
+        .no-export {
+            margin: 40px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mt-8 text-center px-4">
+        <h1 class="text-2xl font-bold text-gray-800 uppercase tracking-tight">Comunicación Institucional Afore Coppel</h1>
+        <p class="text-gray-500 italic mt-1">Manual de Validación de Domicilio</p>
+    </div>
+
+    <div class="flyer-wrapper">
+        <div id="flyer-to-print">
+            
+            <div class="wave-svg-container">
+                <svg width="800" height="350" viewBox="0 0 800 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0H800V240C800 240 600 320 400 320C200 320 0 240 0 240V0Z" fill="#00418D"/>
+                </svg>
+            </div>
+
+            <!-- Burbujas ADN Coppel -->
+            <div class="bubble w-16 h-16 top-[-20px] left-[10%] opacity-40"></div>
+            <div class="bubble w-24 h-24 top-[40px] left-[-40px] opacity-20"></div>
+            <div class="bubble w-8 h-8 top-[180px] left-[45%] opacity-60"></div>
+            <div class="bubble w-12 h-12 top-[240px] right-[20%] opacity-30"></div>
+            
+            <!-- Header -->
+            <div style="position: absolute; top: 50px; left: 60px; right: 60px; z-index: 20;" class="flex justify-between items-start">
+                <div class="flex-1">
+                    <div class="alert-badge mb-5">¡ATENCIÓN ASESOR!</div>
+                    <h1 class="text-white text-3xl font-black leading-tight shadow-text uppercase">
+                        RECHAZO RIESGO POR<br>
+                        <span class="text-coppel-yellow text-4xl">DOMICILIO DIFERENTE</span>
+                    </h1>
+                    <p class="text-white mt-4 text-lg font-bold max-w-xl leading-tight shadow-text">
+                        Es obligatorio realizar la siguiente validación antes de iniciar la gestión.
+                    </p>
+                </div>
+                <div class="flex-shrink-0 pt-2">
+                    <img src="Coppel2.png" alt="Logo" class="h-20 w-auto object-contain drop-shadow-md" onerror="this.src='https://via.placeholder.com/150x80/00418D/FFFFFF?text=Afore+Coppel'">
+                </div>
+            </div>
+
+            <main class="main-content">
+                <!-- Sección 1: Validación Crítica -->
+                <section class="bg-white rounded-[2rem] p-7 shadow-lg border border-gray-100 relative mb-8">
+                    <div class="absolute -top-3 left-8 bg-coppel-blue text-white text-[10px] font-bold py-2 px-6 rounded-full shadow-md z-30 uppercase">
+                        ⚠️ Validación Crítica
+                    </div>
+                    <p class="text-xl text-gray-700 leading-snug">
+                        Antes de iniciar, confirma que la dirección registrada en el sistema <span class="text-coppel-blue font-black">(Titular)</span> sea <span class="text-red-600 font-black underline">IDÉNTICA</span> a la del comprobante físico <span class="text-coppel-blue font-black">(Beneficiario)</span>.
+                    </p>
+                </section>
+
+                <!-- Sección 2: Requisitos del Comprobante -->
+                <section class="mb-8">
+                    <p class="text-coppel-blue font-extrabold uppercase tracking-[0.2em] text-xs mb-3">Requisitos del Comprobante</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center bg-green-50 p-4 rounded-2xl border border-green-100">
+                            <span class="text-2xl mr-3">✅</span>
+                            <span class="text-sm font-bold text-green-800 uppercase leading-tight">Documento ORIGINAL<br><span class="text-[10px] font-medium">(No copias)</span></span>
+                        </div>
+                        <div class="flex items-center bg-green-50 p-4 rounded-2xl border border-green-100">
+                            <span class="text-2xl mr-3">✅</span>
+                            <span class="text-sm font-bold text-green-800 uppercase leading-tight">Antigüedad NO MAYOR<br><span class="text-[10px] font-medium">A 3 MESES</span></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección 3: Imágenes de Referencia -->
+                <section class="flex flex-col mb-4">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <div class="h-[1px] bg-gray-200 flex-1"></div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em]">Referencias de Captura</p>
+                        <div class="h-[1px] bg-gray-200 flex-1"></div>
+                    </div>
+                    <div class="image-grid">
+                        <div class="image-display-frame">
+                            <img src="ref1.png" alt="Ejemplo 1" class="max-w-full max-h-full object-contain" onerror="this.src='https://via.placeholder.com/300x150/f8fafc/64748b?text=Referencia+1'">
+                        </div>
+                        <div class="image-display-frame">
+                            <img src="ref2.png" alt="Ejemplo 2" class="max-w-full max-h-full object-contain" onerror="this.src='https://via.placeholder.com/300x150/f8fafc/64748b?text=Referencia+2'">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sección 4: Tip/Nota -->
+                <div class="tip-box mb-6">
+                    <div class="flex items-start">
+                        <span class="text-2xl mr-3">💡</span>
+                        <div>
+                            <p class="text-sm font-black text-gray-800 uppercase leading-tight mb-1">¿No tiene comprobante de domicilio?</p>
+                            <p class="text-xs text-gray-600 leading-tight">
+                                Se permite usar la <span class="font-bold">Identificación Oficial Vigente</span> del beneficiario como comprobante, <span class="text-red-600 font-bold">SOLO SI</span> el domicilio es visible y coincide plenamente con el sistema.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="flyer-footer">
+                <div class="bg-coppel-yellow h-2 w-full mb-8"></div>
+                <div class="px-12 flex justify-between items-center">
+                    <div class="w-1/2">
+                        <p class="text-coppel-blue font-black text-lg mb-1 italic leading-none uppercase">Gerencia de Atención</p>
+                        <p class="text-gray-500 font-bold text-xs uppercase tracking-tighter">Protocolo de Validación de Identidad</p>
+                    </div>
+                    <div class="text-right border-l-2 border-gray-100 pl-8 w-1/2">
+                        <p class="text-xs font-bold text-gray-400 italic mb-1">Comunicación:</p>
+                        <p class="text-coppel-blue font-black text-base uppercase tracking-tight">AFORE COPPEL INSTITUCIONAL</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- BOTONES -->
+    <div class="no-export flex flex-col items-center gap-4 mb-24">
+        <button onclick="downloadImage('png')" id="btn-png" class="flex items-center px-10 py-5 font-bold text-white bg-blue-600 rounded-2xl shadow-xl hover:bg-blue-700 transition-all active:scale-95">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Descargar Imagen de Alta Calidad
+        </button>
+        <p class="text-gray-400 text-xs uppercase tracking-widest font-bold">Afore Coppel - Versión Blindada 4.0</p>
+    </div>
+
+    <script>
+        async function downloadImage(format) {
+            const flyer = document.getElementById('flyer-to-print');
+            const btn = document.getElementById('btn-png');
+            const originalHTML = btn.innerHTML;
+            
+            try {
+                btn.disabled = true;
+                btn.innerHTML = "<span class='animate-pulse'>Generando Archivo...</span>";
+                
+                // Aseguramos carga de fuentes antes de capturar
+                await document.fonts.ready;
+                
+                const canvas = await html2canvas(flyer, {
+                    scale: 4, 
+                    useCORS: true,
+                    backgroundColor: "#FFFFFF",
+                    width: 800,
+                    // Altura dinámica absoluta
+                    height: flyer.offsetHeight, 
+                    windowWidth: 800,
+                    scrollX: 0,
+                    scrollY: 0,
+                    logging: false,
+                    letterRendering: true,
+                    onclone: (clonedDoc) => {
+                        // Forzamos que el clon se vea como queremos en la foto
+                        const clonedFlyer = clonedDoc.getElementById('flyer-to-print');
+                        clonedFlyer.style.height = "auto";
+                        clonedFlyer.style.overflow = "visible";
+                    }
+                });
+                
+                const imageData = canvas.toDataURL('image/png', 1.0);
+                const link = document.createElement('a');
+                link.download = `Flyer_Coppel_Domicilio_Fiel.png`;
+                link.href = imageData;
+                link.click();
+                
+            } catch (error) {
+                console.error(error);
+                alert("Error al generar la imagen.");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalHTML;
+            }
+        }
+    </script>
+</body>
+</html>
