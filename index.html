@@ -30,7 +30,7 @@
             margin: 20px 0;
         }
 
-        /* ESTRUCTURA TAMAÑO CARTA EXACTO Y CENTRADO SEGURO PARA HTML2CANVAS */
+        /* ESTRUCTURA TAMAÑO CARTA EXACTO */
         .pdf-page {
             width: 816px;
             height: 1056px; 
@@ -42,6 +42,14 @@
             margin: 0 auto 30px auto;
             overflow: hidden; 
             flex-shrink: 0;
+        }
+
+        /* CLASE EXPERTA: Sombra y borde 3D compatible al 100% con html2canvas */
+        .export-safe-shadow {
+            background-color: #ffffff !important;
+            border-radius: 2rem !important; 
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+            border: 1px solid #e2e8f0 !important;
         }
 
         /* Curva SVG para Página 1 */
@@ -167,10 +175,16 @@
 
                 <main class="main-content flex-grow" style="margin-top: 360px;">
                     
-                    <!-- Sección 1: Validación Crítica -->
-                    <section class="bg-white rounded-[2rem] p-8 shadow-lg border border-gray-100 relative mb-12">
-                        <div class="absolute -top-4 left-8 bg-coppel-blue text-white text-[11px] font-bold py-2.5 px-6 rounded-full shadow-md z-30 uppercase tracking-widest border border-blue-400">
-                            ⚠️ Validación Crítica de Domicilio
+                    <!-- Sección 1: Validación Crítica (CON CLASE DE SOMBRA EXPERTA) -->
+                    <section class="export-safe-shadow p-8 relative mb-12">
+                        <div class="absolute -top-4 left-8 bg-coppel-blue text-white text-[11px] font-bold py-2.5 px-6 rounded-full shadow-md z-30 uppercase tracking-widest border border-blue-400 flex items-center">
+                            <!-- SVG Triángulo de advertencia blindado -->
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFD400" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" class="mr-2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            Validación Crítica de Domicilio
                         </div>
                         <p class="text-[22px] text-gray-700 leading-snug mb-8 mt-3">
                             Confirma que la dirección registrada en el sistema <span class="font-bold text-gray-900">(Titular)</span> sea <span class="text-red-600 font-black underline">IDÉNTICA</span> a la del comprobante físico <span class="font-bold text-gray-900">(Beneficiario)</span>.
@@ -267,8 +281,8 @@
 
                 <main class="main-content flex-grow flex flex-col pt-12">
                     
-                    <!-- Sección 3: Imágenes de Referencia -->
-                    <section class="bg-white rounded-[2rem] p-8 shadow-lg border border-gray-200 relative mb-6">
+                    <!-- Sección 3: Imágenes de Referencia (CON CLASE DE SOMBRA EXPERTA) -->
+                    <section class="export-safe-shadow p-8 relative mb-6">
                         <div style="position: absolute; top: -16px; left: 0; width: 100%; text-align: center; z-index: 30;">
                             <span class="bg-coppel-yellow text-coppel-blue text-sm font-black py-2 px-10 rounded-full shadow-md uppercase tracking-[0.2em] border border-yellow-300 inline-block">
                                 Imágenes de Referencia
@@ -284,11 +298,11 @@
                                 <p class="text-gray-600 font-bold text-[11px] uppercase tracking-widest">Evita rechazos por domicilio</p>
                             </div>
 
-                            <!-- NUEVO: NOTA DE ALERTA RESALTADA CON SVG -->
+                            <!-- NUEVO: NOTA DE ALERTA RESALTADA CON SVG BLINDADO PARA PDF -->
                             <div class="bg-red-50 border border-red-200 p-3 mt-4 mb-2 mx-auto max-w-[90%] rounded-xl shadow-sm flex items-center justify-center">
-                                <!-- SVG ALERTA -->
-                                <svg class="w-6 h-6 mr-2 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                <!-- SVG Alerta Fijo con dimensiones y color explícito -->
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" class="mr-2 flex-shrink-0">
+                                    <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                                 </svg>
                                 <p class="text-red-700 font-black text-[13.5px] uppercase tracking-wide leading-snug">
                                     NO OLVIDES REVISAR QUE COINCIDA EL DOMICILIO DE LA <span class="underline">SOLICITUD</span> VS <span class="underline">COMPROBANTE DE DOMICILIO</span>.
@@ -302,9 +316,7 @@
                                 <div class="bg-gray-100 text-gray-700 font-bold px-4 py-2 rounded-t-xl text-[11px] tracking-wider border border-gray-200 w-full text-center border-b-0 uppercase">
                                     Domicilio en Sistema
                                 </div>
-                                <!-- Se eliminó el "p-2" para que la imagen toque los bordes -->
                                 <div class="shadow-md border-[3px] border-coppel-blue/20 bg-white rounded-b-xl overflow-hidden w-full h-[220px] flex items-center justify-center">
-                                    <!-- Se usa "object-cover object-top" para rellenar al 100% todo el espacio -->
                                     <img src="rechazom37.png" alt="Rechazo M37" class="w-full h-full object-cover object-top" onerror="this.src='https://via.placeholder.com/350x220/f8fafc/64748b?text=Pantalla+de+Sistema'">
                                 </div>
                             </div>
@@ -314,21 +326,19 @@
                                 <div class="bg-gray-100 text-gray-700 font-bold px-4 py-2 rounded-t-xl text-[11px] tracking-wider border border-gray-200 w-full text-center border-b-0 uppercase">
                                     Comprobante Físico
                                 </div>
-                                <!-- Se eliminó el "p-2" para que la imagen toque los bordes -->
                                 <div class="shadow-md border-[3px] border-coppel-blue/20 bg-white rounded-b-xl overflow-hidden w-full h-[220px] flex items-center justify-center">
-                                    <!-- Se usa "object-cover object-top" para rellenar al 100% todo el espacio -->
                                     <img src="Comprobantededomicilio.png" alt="Comprobante de Domicilio" class="w-full h-full object-cover object-top" onerror="this.src='https://via.placeholder.com/350x220/f8fafc/64748b?text=Comprobante+F%C3%ADsico'">
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Sección 4: Tip Box Oficial CON SVG -->
+                    <!-- Sección 4: Tip Box Oficial CON SVG BLINDADO PARA PDF -->
                     <div class="bg-[#fffbeb] border-l-[6px] border-coppel-yellow p-6 rounded-r-2xl shadow-sm mb-auto">
                         <div class="flex items-start">
-                            <!-- SVG FOCO -->
-                            <svg class="w-10 h-10 mr-5 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            <!-- SVG Foco Fijo con dimensiones y color explícito -->
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" class="mr-5 flex-shrink-0">
+                                <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                             </svg>
                             <div>
                                 <p class="text-lg font-black text-gray-900 uppercase leading-tight mb-2 tracking-tight">¿No tiene comprobante de domicilio?</p>
@@ -397,7 +407,7 @@
                                 cloneWrapper.style.margin = '0';
                             }
 
-                            // 3. Apagamos la sombra web y su margen inferior en las hojas
+                            // 3. Apagamos la sombra general de la hoja para evitar márgenes blancos fantasma
                             const pages = clonedDoc.querySelectorAll('.pdf-page');
                             pages.forEach(page => {
                                 page.style.boxShadow = 'none';
